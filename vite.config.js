@@ -5,7 +5,7 @@ import path from 'path';
 export default defineConfig({
   plugins: [vue()],
 
-  base: '/dogs-app/dist/',
+  base: '/dogs-app/',
 
   resolve: {
     alias: {
