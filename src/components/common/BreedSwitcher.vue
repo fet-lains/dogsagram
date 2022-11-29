@@ -27,7 +27,6 @@
 
 <script setup>
   import { ref } from 'vue';
-  import AppLoader from '@/components/common/AppLoader.vue';
 
   const props = defineProps({
     options: {
@@ -61,7 +60,7 @@
       font-size: 1.6rem;
       font-weight: 700;
       color: @mine-shaft;
-      background-color: @gallery;
+      background-color: @ronchi;
       user-select: none;
       transition: color @anim-fast;
       z-index: 3;
@@ -109,7 +108,7 @@
       color: @mine-shaft;
       padding: 5px 14px;
       user-select: none;
-      transition: color @anim-slow;
+      transition: background-color @anim-slow;
       cursor: pointer;
       &::first-letter {
         text-transform: capitalize;
@@ -145,14 +144,14 @@
   }
   @media @hover {
     .breed__selected:hover {
-      color: @ronchi;
+      color: @mine-shaft-hover;
       &:after {
-        border-top-color: @ronchi;
+        border-top-color: @mine-shaft-hover;
       }
     }
     .breed__item:hover,
     .breed__item:focus {
-      color: @ronchi;
+      background-color: @ronchi;
     }
   }
 </style>

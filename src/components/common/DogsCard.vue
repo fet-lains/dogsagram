@@ -63,7 +63,7 @@
 <style lang="less" scoped>
   .card {
     position: relative;
-    background-color: @gallery;
+    background-color: @ronchi;
     padding: 15px;
     border-radius: 5px;
     &__image {
@@ -90,7 +90,7 @@
         }
         &--favourite {
           svg {
-            fill: @ronchi;
+            fill: @burnt-sienna;
           }
         }
       }
@@ -101,11 +101,6 @@
       &__image {
         height: 330px;
       }
-    }
-  }
-  @media @lg {
-    .card {
-      padding: 20px 15px;
     }
   }
   @media @hover {

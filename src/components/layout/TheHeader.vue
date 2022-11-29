@@ -65,7 +65,7 @@
 
 <style lang="less" scoped>
   .header {
-    background-color: @gallery;
+    background-color: @ronchi;
     &__body {
       display: grid;
       grid-template-columns: 40px 1fr;
@@ -89,7 +89,7 @@
     transition: fill @anim-slow;
     margin-left: 20px;
     &.active {
-      fill: @ronchi;
+      fill: @burnt-sienna;
     }
     &:focus {
       outline: @cornflower-blue solid 2px;
@@ -109,7 +109,7 @@
   }
   @media @hover {
     .menu-link:not(.active):hover {
-      fill: @ronchi;
+      fill: @mine-shaft-hover;
     }
   }
 </style>

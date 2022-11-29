@@ -13,7 +13,7 @@
       position: absolute;
       width: 10px;
       height: 10px;
-      background-color: @cornflower-blue;
+      background-color: @ronchi;
       border-radius: 50%;
       opacity: 0;
       animation: loader 0.8s cubic-bezier(0.2, 0.32, 0, 0.87) infinite;
