@@ -42,8 +42,9 @@
   defineEmits(['input']);
 
   const isOpened = ref(false);
+  const isSelected = ref('');
 
-  const isSelected = props.default
+  isSelected.value = props.default
     ? props.default
     : props.options.length > 0
     ? props.options[0]
