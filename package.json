@@ -2,7 +2,7 @@
   "name": "dogs-app",
   "homepage": "https://sharaputo.github.io/dogs-app/",
   "private": false,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
