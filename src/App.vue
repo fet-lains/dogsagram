@@ -29,6 +29,18 @@
     overflow-x: hidden;
   }
 
+  #app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .main {
+    flex-grow: 1;
+    flex-shrink: 1;
+    padding-top: 82px;
+  }
+
   .container {
     max-width: 1260px;
     width: 100%;
@@ -50,6 +62,9 @@
   }
 
   @media @md {
+    .main {
+      padding-top: 92px;
+    }
     .container {
       padding: 0 20px;
     }
