@@ -63,7 +63,7 @@
 <style lang="less" scoped>
   .card {
     position: relative;
-    background-color: @ronchi;
+    background-color: @ronchi-light;
     padding: 15px;
     border-radius: 5px;
     &__image {
