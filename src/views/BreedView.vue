@@ -19,10 +19,6 @@
   const store = useBreedStore();
   const API = new useFetch('https://dog.ceo/api/');
 
-  onMounted(() => {
-    getDogImages();
-  });
-
   const getDogImages = () => {
     store.startLoading();
     const chosenBreed = store.breed;
@@ -37,4 +33,8 @@
         store.error = 'Failed to fetch data. Please, try again later!';
       });
   };
+
+  onMounted(() => {
+    getDogImages();
+  });
 </script>
