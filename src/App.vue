@@ -1,6 +1,8 @@
 <template>
   <TheHeader />
-  <RouterView :key="$route.path" />
+  <main class="main">
+    <RouterView :key="$route.path" />
+  </main>
 </template>
 
 <script setup>
