@@ -49,9 +49,6 @@
         console.log(error);
       });
   };
-  onMounted(() => {
-    loadBreeds();
-  });
 
   // Logic to send chosen breed to global state
   const breedStore = useBreedStore();
@@ -60,12 +57,21 @@
     breedStore.setBreed(option);
     router.push({ name: 'breed', params: { breedId: option } });
   };
-  if (!breedStore.breed) router.push({ name: 'home' });
+
+  onMounted(() => {
+    loadBreeds();
+    router.push({ name: 'home' });
+  });
 </script>
 
 <style lang="less" scoped>
   .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     background-color: @ronchi;
+    z-index: 100;
     &__body {
       display: grid;
       grid-template-columns: 40px 1fr;

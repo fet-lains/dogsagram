@@ -1,5 +1,5 @@
 <template>
-  <div class="breed" @blur="isOpened = false">
+  <div class="breed" @blur="isOpened = false" ref="breedWrapper">
     <button
       type="button"
       class="breed__selected"
@@ -27,6 +27,7 @@
 
 <script setup>
   import { ref } from 'vue';
+  import useClickOutside from '@/composables/useClickOutside.js';
 
   const props = defineProps({
     options: {
@@ -49,6 +50,11 @@
     : props.options.length > 0
     ? props.options[0]
     : null;
+
+  const breedWrapper = ref(null);
+  useClickOutside(breedWrapper, () => {
+    isOpened.value = false;
+  });
 </script>
 
 <style lang="less" scoped>
