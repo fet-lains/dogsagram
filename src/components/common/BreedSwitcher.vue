@@ -18,7 +18,9 @@
             isOpened = false;
             $emit('input', option);
           ">
-          {{ option }}
+          <RouterLink :to="{ name: 'breed', params: { breedId: option } }">
+            {{ option }}
+          </RouterLink>
         </li>
       </ul>
     </Transition>
@@ -109,7 +111,8 @@
       overflow: auto;
       z-index: 1;
     }
-    &__item {
+    &__item a {
+      display: block;
       font-size: 1.6rem;
       font-weight: 700;
       color: @mine-shaft;
@@ -120,7 +123,6 @@
       &::first-letter {
         text-transform: capitalize;
       }
-      // !Todo focus on mobile
       &:focus,
       &:active {
         background-color: @ronchi;

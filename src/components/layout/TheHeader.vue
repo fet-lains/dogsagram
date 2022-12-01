@@ -2,9 +2,9 @@
   <header class="header">
     <div class="container">
       <div class="header__body">
-        <router-link to="/" class="header__logo">
+        <RouterLink to="/" class="header__logo">
           <LogoIcon />
-        </router-link>
+        </RouterLink>
 
         <nav class="header__nav">
           <BreedSwitcher
@@ -13,9 +13,9 @@
             :options="selectOptions"
             @input="setBreed" />
 
-          <router-link to="/favourite-dogs" class="menu-link">
+          <RouterLink to="/favourite-dogs" class="menu-link">
             <FavouriteIcon />
-          </router-link>
+          </RouterLink>
         </nav>
       </div>
     </div>
@@ -24,7 +24,6 @@
 
 <script setup>
   import { ref, onMounted } from 'vue';
-  import { useRouter } from 'vue-router';
   import BreedSwitcher from '@/components/common/BreedSwitcher.vue';
   import LogoIcon from '@/components/icons/LogoIcon.vue';
   import FavouriteIcon from '@/components/icons/FavouriteIcon.vue';
@@ -52,10 +51,8 @@
 
   // Logic to send chosen breed to global state
   const breedStore = useBreedStore();
-  const router = useRouter();
   const setBreed = (option) => {
     breedStore.setBreed(option);
-    router.push({ name: 'breed', params: { breedId: option } });
   };
 
   onMounted(() => {
