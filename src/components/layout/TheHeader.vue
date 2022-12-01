@@ -60,7 +60,6 @@
 
   onMounted(() => {
     loadBreeds();
-    router.push({ name: 'home' });
   });
 </script>
 
@@ -80,7 +79,7 @@
       padding: 15px 0;
     }
     &__logo {
-      &:focus {
+      &:focus-visible {
         outline: @cornflower-blue solid 2px;
       }
     }
@@ -97,7 +96,7 @@
     &.active {
       fill: @burnt-sienna;
     }
-    &:focus {
+    &:focus-visible {
       outline: @cornflower-blue solid 2px;
     }
   }

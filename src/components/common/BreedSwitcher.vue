@@ -92,7 +92,7 @@
           transform: rotate(180deg);
         }
       }
-      &:focus {
+      &:focus-visible {
         outline: @cornflower-blue solid 2px;
       }
     }
@@ -119,6 +119,11 @@
       cursor: pointer;
       &::first-letter {
         text-transform: capitalize;
+      }
+      // !Todo focus on mobile
+      &:focus,
+      &:active {
+        background-color: @ronchi;
       }
     }
   }
@@ -156,8 +161,7 @@
         border-top-color: @mine-shaft-hover;
       }
     }
-    .breed__item:hover,
-    .breed__item:focus {
+    .breed__item:hover {
       background-color: @ronchi;
     }
   }
