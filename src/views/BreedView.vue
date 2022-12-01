@@ -1,6 +1,6 @@
 <template>
   <TheGrid>
-    <template #title>{{ store.breed }}</template>
+    <template #title>{{ breed }}</template>
 
     <template #default>
       <DogsCard v-for="(image, i) in breedImages" :key="i" :image-url="image" />
@@ -14,15 +14,17 @@
   import DogsCard from '@/components/common/DogsCard.vue';
   import useFetch from '@/composables/useFetch.js';
   import { useBreedStore } from '@/stores/BreedStore.js';
+  import { useRoute } from 'vue-router';
 
   const breedImages = ref([]);
   const store = useBreedStore();
   const API = new useFetch('https://dog.ceo/api/');
+  const breed = useRoute().params.breedId;
 
   const getDogImages = () => {
     store.startLoading();
-    const chosenBreed = store.breed;
-    API.get(`breed/${chosenBreed}/images`)
+
+    API.get(`breed/${breed}/images`)
       .then((data) => {
         store.stopLoading();
         data.message?.forEach((item) => {

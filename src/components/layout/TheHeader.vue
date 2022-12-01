@@ -10,8 +10,7 @@
           <BreedSwitcher
             class="header__breed"
             default="Breed"
-            :options="selectOptions"
-            @input="setBreed" />
+            :options="selectOptions" />
 
           <RouterLink to="/favourite-dogs" class="menu-link">
             <FavouriteIcon />
@@ -28,7 +27,6 @@
   import LogoIcon from '@/components/icons/LogoIcon.vue';
   import FavouriteIcon from '@/components/icons/FavouriteIcon.vue';
   import useFetch from '@/composables/useFetch.js';
-  import { useBreedStore } from '@/stores/BreedStore.js';
 
   // Logic to get the list of breeds
   const selectOptions = ref([]);
@@ -47,12 +45,6 @@
       .catch((error) => {
         console.log(error);
       });
-  };
-
-  // Logic to send chosen breed to global state
-  const breedStore = useBreedStore();
-  const setBreed = (option) => {
-    breedStore.setBreed(option);
   };
 
   onMounted(() => {

@@ -2,12 +2,6 @@ import { defineStore } from 'pinia';
 import { ref, onMounted } from 'vue';
 
 export const useBreedStore = defineStore('breedStore', () => {
-  // Logic to choose breed
-  const breed = ref('');
-  const setBreed = (option) => {
-    breed.value = option;
-  };
-
   // Genaral state for loading images
   const isLoading = ref(false);
   const startLoading = () => {
@@ -41,11 +35,9 @@ export const useBreedStore = defineStore('breedStore', () => {
   });
 
   return {
-    breed,
     isLoading,
     error,
     favouriteImages,
-    setBreed,
     startLoading,
     stopLoading,
     setError,

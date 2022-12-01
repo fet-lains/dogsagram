@@ -16,7 +16,6 @@
           @click="
             isSelected = option;
             isOpened = false;
-            $emit('input', option);
           ">
           <RouterLink :to="{ name: 'breed', params: { breedId: option } }">
             {{ option }}
@@ -42,7 +41,6 @@
       default: null,
     },
   });
-  defineEmits(['input']);
 
   const isOpened = ref(false);
   const isSelected = ref('');
