@@ -1,6 +1,6 @@
 <template>
   <TheGrid>
-    <template #title>Cute dogs</template>
+    <template #title>Cute random dogs</template>
 
     <template #default>
       <DogsCard
