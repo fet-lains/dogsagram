@@ -87,7 +87,7 @@
         transition: color @anim-fast, transform @anim-fast,
           border-top-color @anim-fast;
       }
-      &.isOpened {
+      &.opened {
         &:after {
           transform: rotate(180deg);
         }
