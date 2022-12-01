@@ -3,7 +3,12 @@
     <template #title>{{ breed }}</template>
 
     <template #default>
-      <DogsCard v-for="(image, i) in breedImages" :key="i" :image-url="image" />
+      <TransitionGroup appear name="cards-scale">
+        <DogsCard
+          v-for="(image, i) in breedImages"
+          :key="i"
+          :image-url="image" />
+      </TransitionGroup>
     </template>
   </TheGrid>
 </template>

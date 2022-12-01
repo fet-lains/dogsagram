@@ -61,6 +61,24 @@
     }
   }
 
+  // Cards transition
+  .cards-scale-enter-active {
+    animation: scale @anim-slow;
+  }
+  .cards-scale-leave-active {
+    animation: scale @anim-slow reverse;
+  }
+  @keyframes scale {
+    0% {
+      opacity: 0;
+      transform: scale(0.7);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
   @media @md {
     .main {
       padding-top: 92px;

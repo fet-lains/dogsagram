@@ -3,10 +3,12 @@
     <template #title>Cute random dogs</template>
 
     <template #default>
-      <DogsCard
-        v-for="(image, i) in randomImages"
-        :key="i"
-        :image-url="image" />
+      <TransitionGroup appear name="cards-scale">
+        <DogsCard
+          v-for="(image, i) in randomImages"
+          :key="i"
+          :image-url="image" />
+      </TransitionGroup>
     </template>
   </TheGrid>
 </template>
