@@ -1,5 +1,5 @@
 <template>
-  <article class="card">
+  <article class="card" v-touch:swipe.left="toggleFavourite">
     <div class="card__image ibg">
       <img :src="imageUrl" alt="" />
     </div>
