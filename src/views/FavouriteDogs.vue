@@ -3,11 +3,13 @@
     <template #title>Favourite dogs</template>
 
     <template #default>
-      <DogsCard
-        v-for="(image, i) in store.favouriteImages"
-        :key="i"
-        :image-url="image"
-        favourite />
+      <TransitionGroup appear name="cards-scale">
+        <DogsCard
+          v-for="(image, i) in store.favouriteImages"
+          :key="i"
+          :image-url="image"
+          favourite />
+      </TransitionGroup>
     </template>
   </TheGrid>
 </template>
