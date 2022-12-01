@@ -3,10 +3,8 @@ export default class FetchWrapper {
     this.baseURL = baseURL;
   }
 
-  async get(endpoint) {
-    const response = await fetch(this.baseURL + endpoint);
-    const data = await response.json();
-    return data;
+  get(endpoint) {
+    return fetch(this.baseURL + endpoint).then((response) => response.json());
   }
 
   put(endpoint, body) {
@@ -25,15 +23,13 @@ export default class FetchWrapper {
     return this._send('delete', endpoint, body);
   }
 
-  async _send(method, endpoint, body) {
-    const response = await fetch(this.baseURL + endpoint, {
+  _send(method, endpoint, body) {
+    return fetch(this.baseURL + endpoint, {
       method,
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(body),
-    });
-    const data = await response.json();
-    return data;
+    }).then((response) => response.json());
   }
 }
