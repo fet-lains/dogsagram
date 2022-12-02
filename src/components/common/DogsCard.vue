@@ -69,7 +69,7 @@
 <style lang="less" scoped>
   .card {
     position: relative;
-    background-color: @ronchi-light;
+    background-color: var(--card-background);
     padding: 15px;
     border-radius: 5px;
     &__image {
@@ -87,12 +87,12 @@
         height: 25px;
         svg {
           width: 100%;
-          fill: @white;
+          fill: var(--heart-blank);
           transition: fill @anim-fast;
         }
         &--favourite {
           svg {
-            fill: @burnt-sienna;
+            fill: var(--heart);
             animation: pulse @anim-slow;
           }
         }

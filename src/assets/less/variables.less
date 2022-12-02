@@ -1,19 +1,49 @@
 // Colors naming
 // https://chir.ag/projects/name-that-color/#6195ED
+:root {
+  --white: #fff;
+  --mine-shaft: #222;
+  --mine-shaft-hover: #383838;
+  --gallery: #eee;
+  --ronchi: #ebb757;
+  --ronchi-light: #ebb75740;
+  --ronchi-dark: #ebb75780;
+  --burnt-sienna: #eb6d57;
+  --cornflower-blue: #578beb;
+
+  // Semantic names
+  --background: var(--white);
+  --breed-background: var(--gallery);
+  --card-background: var(--ronchi-light);
+  --footer: var(--ronchi);
+  --header: var(--ronchi);
+  --heart: var(--burnt-sienna);
+  --heart-blank: var(--white);
+  --loader: var(--ronchi);
+  --outline: var(--cornflower-blue);
+  --text: var(--mine-shaft);
+  --text-content: var(--mine-shaft);
+  --text-hover: var(--mine-shaft-hover);
+  --theme-toggle: var(--mine-shaft);
+}
+
+:root.dark-theme {
+  --background: var(--mine-shaft);
+  --text-content: var(--gallery);
+  --theme-toggle: var(--white);
+}
+
+// Fonts
 @font: Raleway, Helvetica, 'Trebuchet MS', Tahoma, sans-serif;
-@white: #fff;
-@mine-shaft: #222;
-@mine-shaft-hover: #383838;
-@gallery: #eee;
-@ronchi: #ebb757;
-@ronchi-light: #ebb75740;
-@burnt-sienna: #eb6d57;
-@cornflower-blue: #578beb;
+
+// Transitions
 @anim-slow: 0.3s ease-in-out;
 @anim-fast: 0.2s ease-in-out;
 
+// Media querries
 @xs: ~'only screen and (min-width: 600px)';
 @sm: ~'only screen and (min-width: 768px)';
 @md: ~'only screen and (min-width: 1024px)';
 @lg: ~'only screen and (min-width: 1440px)';
+
 @hover: ~'(hover: hover)';

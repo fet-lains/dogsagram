@@ -30,9 +30,11 @@
       font-size: 2.2rem;
       text-align: center;
       text-transform: uppercase;
+      color: var(--text-content);
     }
     &__hint {
       text-align: center;
+      color: var(--text-content);
       margin-top: 20px;
     }
     &__grid {
@@ -44,6 +46,7 @@
       font-size: 2rem;
       font-weight: 700;
       text-align: center;
+      color: var(--text-content);
       margin-top: 20px;
     }
   }

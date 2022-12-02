@@ -3,10 +3,12 @@
   <main class="main">
     <RouterView :key="$route.path" />
   </main>
+  <TheFooter />
 </template>
 
 <script setup>
   import TheHeader from '@/components/layout/TheHeader.vue';
+  import TheFooter from '@/components/layout/TheFooter.vue';
 </script>
 
 <style lang="less">
@@ -24,8 +26,9 @@
     font-feature-settings: 'pnum' on, 'lnum' on;
     word-wrap: break-word;
     overflow-wrap: break-word;
-    color: @mine-shaft;
-    background-color: @white;
+    color: var(--text);
+    background-color: var(--background);
+    transition: background-color @anim-slow;
     overflow-x: hidden;
   }
 
