@@ -10,7 +10,6 @@ export default (el, callback) => {
       return false;
     }
     event.preventDefault();
-    console.log('Tapped twice');
     callback();
   };
 
