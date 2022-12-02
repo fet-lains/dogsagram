@@ -74,9 +74,9 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       background-color: var(--background);
-      padding: 4px 7px;
+      padding: 6px 7px;
       border-radius: 16px;
       transition: background-color @anim-slow;
       z-index: 1;
