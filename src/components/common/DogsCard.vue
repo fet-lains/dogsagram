@@ -71,7 +71,6 @@
     position: relative;
     background-color: var(--card-background);
     padding: 15px;
-    transition: background-color @anim-slow;
     border-radius: 5px;
     &__image {
       aspect-ratio: 1/1;
