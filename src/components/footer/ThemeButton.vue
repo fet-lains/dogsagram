@@ -62,7 +62,12 @@
   .theme-toggle {
     position: relative;
     &__checkbox {
-      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      visibility: hidden;
     }
     &__label {
       position: relative;
@@ -71,7 +76,7 @@
       justify-content: space-between;
       font-size: 1.8rem;
       background-color: var(--background);
-      padding: 5px 7px;
+      padding: 4px 7px;
       border-radius: 16px;
       transition: background-color @anim-slow;
       z-index: 1;
@@ -79,8 +84,8 @@
     }
     &__slider {
       position: absolute;
-      top: 5px;
-      left: 5px;
+      top: 4px;
+      left: 6px;
       width: 22px;
       height: 22px;
       background-color: var(--theme-toggle);

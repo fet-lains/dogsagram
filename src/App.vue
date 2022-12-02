@@ -42,6 +42,7 @@
     flex-grow: 1;
     flex-shrink: 1;
     padding-top: 82px;
+    padding-bottom: 60px;
   }
 
   .container {
