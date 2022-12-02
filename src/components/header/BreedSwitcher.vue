@@ -66,8 +66,8 @@
       display: inline-block;
       font-size: 1.6rem;
       font-weight: 700;
-      color: @mine-shaft;
-      background-color: @ronchi;
+      color: var(--text);
+      background-color: var(--header);
       user-select: none;
       transition: color @anim-fast;
       z-index: 3;
@@ -83,7 +83,7 @@
         right: -17px;
         border-left: 6px solid transparent;
         border-right: 6px solid transparent;
-        border-top: 6px solid @mine-shaft;
+        border-top: 6px solid var(--text);
         transition: color @anim-fast, transform @anim-fast,
           border-top-color @anim-fast;
       }
@@ -93,7 +93,7 @@
         }
       }
       &:focus-visible {
-        outline: @cornflower-blue solid 2px;
+        outline: var(--outline) solid 2px;
       }
     }
     &__list {
@@ -103,7 +103,7 @@
       top: 40px;
       right: -14px;
       text-align: right;
-      background-color: @gallery;
+      background-color: var(--breed-background);
       padding: 10px 0;
       border-radius: 5px;
       overflow: auto;
@@ -113,7 +113,7 @@
       display: block;
       font-size: 1.6rem;
       font-weight: 700;
-      color: @mine-shaft;
+      color: var(--text);
       padding: 5px 14px;
       user-select: none;
       transition: background-color @anim-slow;
@@ -123,7 +123,7 @@
       }
       &:focus,
       &:active {
-        background-color: @ronchi;
+        background-color: var(--header);
       }
     }
   }
@@ -156,13 +156,13 @@
   }
   @media @hover {
     .breed__selected:hover {
-      color: @mine-shaft-hover;
+      color: var(--text-hover);
       &:after {
-        border-top-color: @mine-shaft-hover;
+        border-top-color: var(--text-hover);
       }
     }
     .breed__item:hover {
-      background-color: @ronchi;
+      background-color: var(--header);
     }
   }
 </style>

@@ -23,7 +23,7 @@
 
 <script setup>
   import { ref, onMounted } from 'vue';
-  import BreedSwitcher from '@/components/common/BreedSwitcher.vue';
+  import BreedSwitcher from '@/components/header/BreedSwitcher.vue';
   import LogoIcon from '@/components/icons/LogoIcon.vue';
   import FavouriteIcon from '@/components/icons/FavouriteIcon.vue';
   import useFetch from '@/composables/useFetch.js';
@@ -58,7 +58,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    background-color: @ronchi;
+    background-color: var(--header);
     z-index: 100;
     &__body {
       display: grid;
@@ -69,8 +69,11 @@
     }
     &__logo {
       &:focus-visible {
-        outline: @cornflower-blue solid 2px;
+        outline: var(--outline) solid 2px;
       }
+    }
+    &__logo svg {
+      fill: var(--text);
     }
     &__nav {
       display: flex;
@@ -79,14 +82,14 @@
     }
   }
   .menu-link {
-    fill: @mine-shaft;
+    fill: var(--text);
     transition: fill @anim-slow;
     margin-left: 20px;
     &.active {
-      fill: @burnt-sienna;
+      fill: var(--heart);
     }
     &:focus-visible {
-      outline: @cornflower-blue solid 2px;
+      outline: var(--outline) solid 2px;
     }
   }
   @media @md {
@@ -103,7 +106,7 @@
   }
   @media @hover {
     .menu-link:not(.active):hover {
-      fill: @mine-shaft-hover;
+      fill: var(--text-hover);
     }
   }
 </style>
