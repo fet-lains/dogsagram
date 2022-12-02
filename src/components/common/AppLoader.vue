@@ -7,6 +7,7 @@
     position: relative;
     display: grid;
     place-items: center;
+    margin-top: 20px;
     &::before,
     &::after {
       content: '';
