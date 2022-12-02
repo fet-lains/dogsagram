@@ -21,7 +21,7 @@
     }
     a {
       font-weight: 700;
-      color: @ronchi;
+      color: var(--loader);
     }
   }
   @media @md {
