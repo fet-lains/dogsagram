@@ -1,5 +1,5 @@
 <template>
-  <article class="card" v-touch:swipe.left="toggleFavourite">
+  <article class="card" ref="dogsCard">
     <div class="card__image ibg">
       <img :src="imageUrl" alt="" />
     </div>
@@ -18,6 +18,7 @@
 <script setup>
   import { ref, onMounted } from 'vue';
   import FavouriteIconVue from '@/components/icons/FavouriteIcon.vue';
+  import useDoubleTap from '@/composables/useDoubleTap.js';
   import { useBreedStore } from '@/stores/BreedStore.js';
 
   const props = defineProps({
@@ -55,8 +56,12 @@
     }
   };
 
+  // Double tap logic to toggle favourite
+  const dogsCard = ref(null);
+
   onMounted(() => {
     setFavouriteIcon();
+    useDoubleTap(dogsCard.value, toggleFavourite);
   });
 </script>
 

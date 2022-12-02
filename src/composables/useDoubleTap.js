@@ -1,5 +1,6 @@
-export default (el) => {
+export default (el, callback) => {
   let tapedTwice = false;
+
   const tapHandler = (event) => {
     if (!tapedTwice) {
       tapedTwice = true;
@@ -9,6 +10,8 @@ export default (el) => {
       return false;
     }
     event.preventDefault();
+    console.log('Tapped twice');
+    callback();
   };
 
   el.addEventListener('touchstart', tapHandler);
