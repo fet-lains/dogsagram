@@ -139,7 +139,7 @@
       &__footer {
         .like-button:not(.like-button--favourite) {
           svg:hover {
-            fill: var(--text-hover);
+            fill: var(--heart-hover);
           }
         }
       }
