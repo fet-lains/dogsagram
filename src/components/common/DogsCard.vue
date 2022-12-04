@@ -3,7 +3,8 @@
     <div class="card__image ibg">
       <img :src="imageUrl" alt="" />
     </div>
-    <div class="card__action">
+    <div class="card__footer">
+      <h2 class="breed-title">{{ breed }}</h2>
       <button
         type="button"
         class="like-button"
@@ -16,9 +17,10 @@
 </template>
 
 <script setup>
-  import { ref, onMounted } from 'vue';
+  import { ref, computed, onMounted } from 'vue';
   import FavouriteIcon from '@/components/icons/FavouriteIcon.vue';
   import useDoubleTap from '@/composables/useDoubleTap.js';
+  import useGetBreed from '@/composables/useGetBreed.js';
   import { useBreedStore } from '@/stores/BreedStore.js';
 
   const props = defineProps({
@@ -57,6 +59,11 @@
     }
   };
 
+  // Logic to get breed from url
+  const breed = computed(() => {
+    return useGetBreed(props.imageUrl);
+  });
+
   // Double tap logic to toggle favourite
   const dogsCard = ref(null);
 
@@ -68,7 +75,6 @@
 
 <style lang="less" scoped>
   .card {
-    position: relative;
     background-color: var(--card-background);
     padding: 15px;
     border-radius: 5px;
@@ -77,14 +83,14 @@
       border-radius: 5px;
       overflow: hidden;
     }
-    &__action {
-      position: absolute;
-      right: 20px;
-      bottom: 20px;
+    &__footer {
+      display: grid;
+      grid-template-columns: 1fr 25px;
+      align-items: center;
+      gap: 20px;
+      padding-top: 15px;
       transition: opacity @anim-slow, visibility @anim-slow;
       .like-button {
-        width: 25px;
-        height: 25px;
         svg {
           width: 100%;
           fill: var(--heart-blank);
@@ -95,6 +101,14 @@
             fill: var(--heart);
             animation: pulse @anim-slow;
           }
+        }
+      }
+      .breed-title {
+        font-size: 1.6rem;
+        color: var(--card-title);
+        transition: color @anim-slow;
+        &::first-letter {
+          text-transform: uppercase;
         }
       }
     }
@@ -112,22 +126,23 @@
   }
   @media @md {
     .card {
-      &__action {
-        right: calc(50% - 40px);
-        bottom: calc(50% - 40px);
-        opacity: 0;
-        visibility: hidden;
-        .like-button {
-          width: 80px;
-          height: 80px;
+      &__footer {
+        grid-template-columns: 1fr 30px;
+        .breed-title {
+          font-size: 1.8rem;
         }
       }
     }
   }
   @media @hover {
-    .card:hover .card__action {
-      opacity: 1;
-      visibility: visible;
+    .card {
+      &__footer {
+        .like-button:not(.like-button--favourite) {
+          svg:hover {
+            fill: var(--text-hover);
+          }
+        }
+      }
     }
   }
 </style>
