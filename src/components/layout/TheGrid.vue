@@ -31,11 +31,13 @@
       text-align: center;
       text-transform: uppercase;
       color: var(--text-content);
+      transition: color @anim-slow;
     }
     &__hint {
       text-align: center;
       color: var(--text-content);
       margin-top: 20px;
+      transition: color @anim-slow;
     }
     &__grid {
       display: grid;
