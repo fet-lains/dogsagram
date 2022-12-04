@@ -69,12 +69,16 @@
       }
     }
   }
-  @media @lg {
+  @media @md {
     .dogs {
-      padding: 50px 0;
       &__hint {
         display: none;
       }
+    }
+  }
+  @media @lg {
+    .dogs {
+      padding: 50px 0;
       &__grid {
         grid-template-columns: repeat(3, 1fr);
         margin-top: 40px;
