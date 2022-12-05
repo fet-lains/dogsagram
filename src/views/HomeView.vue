@@ -10,6 +10,12 @@
           :image-url="image" />
       </TransitionGroup>
     </template>
+
+    <template #refresh>
+      <div class="refresh">
+        <BaseButton @custom-action="refreshImages">Refresh</BaseButton>
+      </div>
+    </template>
   </TheGrid>
 </template>
 
@@ -17,6 +23,7 @@
   import { ref, onMounted } from 'vue';
   import TheGrid from '@/components/layout/TheGrid.vue';
   import DogsCard from '@/components/common/DogsCard.vue';
+  import BaseButton from '@/components/common/BaseButton.vue';
   import useFetch from '@/composables/useFetch.js';
   import { useBreedStore } from '@/stores/BreedStore.js';
 
@@ -37,8 +44,20 @@
         store.error = 'Failed to fetch data. Please, try again later!';
       });
   };
+  const refreshImages = () => {
+    randomImages.value = [];
+    getDogImages();
+  };
 
   onMounted(() => {
     getDogImages();
   });
 </script>
+
+<style lang="less" scoped>
+  .refresh {
+    display: grid;
+    place-items: center;
+    margin-top: 30px;
+  }
+</style>
