@@ -2,7 +2,7 @@
   <header class="header">
     <div class="container">
       <div class="header__body">
-        <RouterLink to="/" class="header__logo">
+        <RouterLink to="/" class="header__logo" aria-label="home page">
           <LogoIcon />
         </RouterLink>
 
@@ -12,7 +12,10 @@
             default="Breed"
             :options="selectOptions" />
 
-          <RouterLink to="/favourite-dogs" class="menu-link">
+          <RouterLink
+            to="/favourite-dogs"
+            class="menu-link"
+            aria-label="favourite dogs page">
             <FavouriteIcon />
           </RouterLink>
         </nav>
