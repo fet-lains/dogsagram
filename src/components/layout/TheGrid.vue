@@ -13,6 +13,8 @@
       <div class="dogs__grid" v-else>
         <slot />
       </div>
+
+      <slot name="refresh" />
     </div>
   </section>
 </template>
