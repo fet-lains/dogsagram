@@ -47,6 +47,7 @@
   const refreshImages = () => {
     randomImages.value = [];
     getDogImages();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   onMounted(() => {
