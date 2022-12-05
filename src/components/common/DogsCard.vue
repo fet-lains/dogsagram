@@ -8,6 +8,7 @@
       <button
         type="button"
         class="like-button"
+        aria-label="like button"
         :class="{ 'like-button--favourite': isFavourite || props.favourite }"
         @click="toggleFavourite">
         <FavouriteIcon />
@@ -91,6 +92,9 @@
       padding-top: 15px;
       transition: opacity @anim-slow, visibility @anim-slow;
       .like-button {
+        &:focus-visible {
+          outline: var(--outline) solid 2px;
+        }
         svg {
           width: 100%;
           fill: var(--heart-blank);
