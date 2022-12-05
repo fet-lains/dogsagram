@@ -1,11 +1,16 @@
 <template>
   <div class="theme-toggle">
-    <input
-      type="checkbox"
-      class="theme-toggle__checkbox"
-      id="checkbox"
-      @change="toggleTheme" />
-    <label for="checkbox" class="theme-toggle__label">
+    <label
+      for="checkbox"
+      class="theme-toggle__label"
+      aria-label="toggle theme"
+      @keydown.enter="toggleTheme"
+      tabindex="0">
+      <input
+        type="checkbox"
+        class="theme-toggle__checkbox"
+        id="checkbox"
+        @change="toggleTheme" />
       <span>🌙</span>
       <span>☀️</span>
       <div
@@ -60,7 +65,6 @@
 
 <style lang="less" scoped>
   .theme-toggle {
-    position: relative;
     &__checkbox {
       position: absolute;
       top: 0;
@@ -81,6 +85,9 @@
       transition: background-color @anim-slow;
       z-index: 1;
       cursor: pointer;
+      &:focus-visible {
+        outline: var(--outline) solid 2px;
+      }
     }
     &__slider {
       position: absolute;
