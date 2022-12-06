@@ -13,19 +13,20 @@ export const useBreedStore = defineStore('breedStore', () => {
 
   // General state for errors
   const error = ref('');
-  const setError = (message) => {
+  const setError = (message: string) => {
     error.value = message;
   };
 
   // Logic to handle favourite images
-  const favouriteImages = ref([]);
+  const favouriteImages = ref<[] | string[]>([]);
   const saveFavouriteImages = () => {
     localStorage.setItem('favourites', JSON.stringify(favouriteImages.value));
   };
-  const loadFavouriteImages = () => {
-    const favouriteDogs = JSON.parse(
+  const loadFavouriteImages = (): void => {
+    const favouriteDogs: [] | string[] = JSON.parse(
       localStorage.getItem('favourites') || '[]',
     );
+    console.log(favouriteDogs);
 
     favouriteImages.value = favouriteDogs;
   };

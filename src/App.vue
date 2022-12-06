@@ -6,7 +6,8 @@
   <TheFooter />
 </template>
 
-<script setup>
+<script setup lang="ts">
+  import { RouterView } from 'vue-router';
   import TheHeader from '@/components/layout/TheHeader.vue';
   import TheFooter from '@/components/layout/TheFooter.vue';
 </script>
@@ -65,6 +66,18 @@
     }
   }
 
+  .error {
+    font-weight: 700;
+  }
+  .error,
+  .favourite-hint,
+  .tap-hint {
+    text-align: center;
+    color: var(--text-content);
+    margin-top: 20px;
+    transition: color @anim-slow;
+  }
+
   // Cards transition
   .cards-scale-enter-active {
     animation: scale @anim-slow;
@@ -83,12 +96,22 @@
     }
   }
 
+  @media @sm {
+    .error,
+    .favourite-hint,
+    .tap-hint {
+      margin-top: 30px;
+    }
+  }
   @media @md {
     .main {
       padding-top: 92px;
     }
     .container {
       padding: 0 20px;
+    }
+    .tap-hint {
+      display: none;
     }
   }
   @media @lg {
