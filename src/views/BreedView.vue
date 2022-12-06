@@ -29,7 +29,13 @@
   const getDogImages = () => {
     store.startLoading();
 
-    API.get(`breed/${breed}/images`)
+    let fetchBreed = breed;
+
+    if (breed.includes('-')) {
+      fetchBreed = breed.replaceAll('-', '/');
+    }
+
+    API.get(`breed/${fetchBreed}/images`)
       .then((data) => {
         store.stopLoading();
         data.message?.forEach((item) => {

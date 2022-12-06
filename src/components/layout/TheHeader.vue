@@ -34,16 +34,32 @@
   // Logic to get the list of breeds
   const selectOptions = ref([]);
   const API = new useFetch('https://dog.ceo/api/');
+
   const loadBreeds = () => {
     API.get('breeds/list/all')
       .then((data) => {
-        const breeds = data.message;
-        const breedsList = Object.keys(breeds);
+        // Reset breeds list initially
         selectOptions.value = [];
 
-        breedsList.forEach((breed) => {
-          selectOptions.value.push(breed);
+        // Array to store 1st and 2nd level breeds
+        let unsortedBreeds;
+
+        const breeds = data.message;
+
+        // 1st level breeds
+        unsortedBreeds = Object.keys(breeds);
+
+        // Getting 2nd level breeds
+        unsortedBreeds.forEach((breed) => {
+          const subBreed = breeds[breed];
+          if (subBreed.length > 0) {
+            subBreed.forEach((item) => {
+              unsortedBreeds.push(`${breed}-${item}`);
+            });
+          }
         });
+
+        selectOptions.value = unsortedBreeds.sort();
       })
       .catch((error) => {
         console.log(error);
