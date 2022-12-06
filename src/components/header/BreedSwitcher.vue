@@ -97,7 +97,7 @@
       }
     }
     &__list {
-      width: 170px;
+      width: 220px;
       height: 300px;
       position: absolute;
       top: 40px;
