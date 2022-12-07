@@ -24,36 +24,37 @@
   </header>
 </template>
 
-<script setup>
+<script setup lang="ts">
   import { ref, onMounted } from 'vue';
   import BreedSwitcher from '@/components/header/BreedSwitcher.vue';
   import LogoIcon from '@/components/icons/LogoIcon.vue';
   import FavouriteIcon from '@/components/icons/FavouriteIcon.vue';
-  import useFetch from '@/composables/useFetch.js';
+  import useFetch from '@/composables/useFetch';
 
   // Logic to get the list of breeds
-  const selectOptions = ref([]);
+  const selectOptions = ref<string[]>([]);
   const API = new useFetch('https://dog.ceo/api/');
 
-  const loadBreeds = () => {
+  const loadBreeds = (): void => {
     API.get('breeds/list/all')
       .then((data) => {
         // Reset breeds list initially
         selectOptions.value = [];
 
         // Array to store 1st and 2nd level breeds
-        let unsortedBreeds;
+        let unsortedBreeds: string[];
 
-        const breeds = data.message;
+        const breeds: object = data.message;
 
         // 1st level breeds
         unsortedBreeds = Object.keys(breeds);
 
         // Getting 2nd level breeds
-        unsortedBreeds.forEach((breed) => {
-          const subBreed = breeds[breed];
+        unsortedBreeds.forEach((breed: string) => {
+          const subBreed: string[] = breeds[breed as keyof typeof breeds];
+
           if (subBreed.length > 0) {
-            subBreed.forEach((item) => {
+            subBreed.forEach((item: string) => {
               unsortedBreeds.push(`${breed}-${item}`);
             });
           }
