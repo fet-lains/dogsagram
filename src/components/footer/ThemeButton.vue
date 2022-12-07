@@ -22,12 +22,12 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
   import { ref, onMounted } from 'vue';
 
   const userTheme = ref('light-theme');
 
-  const toggleTheme = () => {
+  const toggleTheme = (): void => {
     const activeTheme = localStorage.getItem('user-theme');
     if (activeTheme === 'light-theme') {
       setTheme('dark-theme');
@@ -36,17 +36,17 @@
     }
   };
 
-  const getTheme = () => {
+  const getTheme = (): string | null => {
     return localStorage.getItem('user-theme');
   };
 
-  const setTheme = (theme) => {
+  const setTheme = (theme: string): void => {
     localStorage.setItem('user-theme', theme);
     userTheme.value = theme;
     document.documentElement.className = theme;
   };
 
-  const getMediaPreference = () => {
+  const getMediaPreference = (): string => {
     const hasDarkPreference = window.matchMedia(
       '(prefers-color-scheme: dark)',
     ).matches;
