@@ -23,7 +23,6 @@
   import { ref, computed, onMounted } from 'vue';
   import FavouriteIcon from '@/components/icons/FavouriteIcon.vue';
   import useDoubleTap from '@/composables/useDoubleTap';
-  import useGetBreed from '@/composables/useGetBreed';
   import { useBreedStore } from '@/stores/BreedStore';
 
   interface DogsCardProps {
@@ -62,7 +61,7 @@
 
   // Logic to get breed from url
   const breed = computed((): string => {
-    return useGetBreed(props.imageUrl);
+    return props.imageUrl.substring(30).split('/')[0];
   });
 
   // Double tap logic to toggle favourite
