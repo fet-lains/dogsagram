@@ -1,5 +1,5 @@
 <template>
-  <div class="breed" @blur="isOpened = false" ref="breedWrapper">
+  <div class="breed" @blur="isOpened = false" v-click-outside="closeBreedMenu">
     <button
       type="button"
       class="breed__selected"
@@ -26,24 +26,21 @@
   </div>
 </template>
 
-<script setup>
-  import { ref } from 'vue';
-  import useClickOutside from '@/composables/useClickOutside.js';
+<script setup lang="ts">
+  import { onMounted, ref } from 'vue';
+  // import useClickOutside from '@/composables/useClickOutside';
 
-  const props = defineProps({
-    options: {
-      type: Array,
-      required: true,
-    },
-    default: {
-      type: String,
-      required: false,
-      default: null,
-    },
+  interface BreedSwitcherProps {
+    options: string[];
+    default?: string | null;
+  }
+
+  const props = withDefaults(defineProps<BreedSwitcherProps>(), {
+    default: null,
   });
 
   const isOpened = ref(false);
-  const isSelected = ref('');
+  const isSelected = ref<string | null>(null);
 
   isSelected.value = props.default
     ? props.default
@@ -51,10 +48,18 @@
     ? props.options[0]
     : null;
 
-  const breedWrapper = ref(null);
-  useClickOutside(breedWrapper, () => {
+  const closeBreedMenu = () => {
     isOpened.value = false;
-  });
+  };
+  // const breedWrapper = ref<HTMLDivElement | null>(null);
+
+  // onMounted(() => {
+  //   if (breedWrapper.value) {
+  //     useClickOutside(breedWrapper.value, () => {
+  //       isOpened.value = false;
+  //     });
+  //   }
+  // });
 </script>
 
 <style lang="less" scoped>
@@ -97,7 +102,7 @@
       }
     }
     &__list {
-      width: 170px;
+      width: 220px;
       height: 300px;
       position: absolute;
       top: 40px;
@@ -145,9 +150,6 @@
     .breed {
       &__selected {
         font-size: 1.8rem;
-      }
-      &__list {
-        width: 180px;
       }
       &__item {
         font-size: 1.8rem;

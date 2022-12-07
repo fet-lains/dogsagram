@@ -9,7 +9,7 @@
   </footer>
 </template>
 
-<script setup>
+<script setup lang="ts">
   import ThemeButton from '@/components/footer/ThemeButton.vue';
   const date = new Date().getFullYear();
 </script>

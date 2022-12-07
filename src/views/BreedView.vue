@@ -2,6 +2,10 @@
   <TheGrid>
     <template #title>{{ breed }}</template>
 
+    <template #tap-hint>
+      <p class="tap-hint">Tap twice to toggle favourite!</p>
+    </template>
+
     <template #default>
       <TransitionGroup appear name="cards-scale">
         <DogsCard
@@ -13,32 +17,31 @@
   </TheGrid>
 </template>
 
-<script setup>
+<script setup lang="ts">
   import { ref, onMounted } from 'vue';
   import TheGrid from '@/components/layout/TheGrid.vue';
   import DogsCard from '@/components/common/DogsCard.vue';
-  import useFetch from '@/composables/useFetch.js';
-  import { useBreedStore } from '@/stores/BreedStore.js';
+  import useFetch from '@/composables/useFetch';
+  import { useBreedStore } from '@/stores/BreedStore';
   import { useRoute } from 'vue-router';
 
-  const breedImages = ref([]);
+  const breedImages = ref<string[]>([]);
   const store = useBreedStore();
   const API = new useFetch('https://dog.ceo/api/');
-  const breed = useRoute().params.breedId;
+  const breed: string | string[] = useRoute().params.breedId;
 
-  const getDogImages = () => {
+  const getDogImages = (): void => {
     store.startLoading();
+    let derivedBreed = breed;
 
-    let fetchBreed = breed;
-
-    if (breed.includes('-')) {
-      fetchBreed = breed.replaceAll('-', '/');
+    if (breed.includes('-') && typeof breed === 'string') {
+      derivedBreed = breed.replaceAll('-', '/');
     }
 
-    API.get(`breed/${fetchBreed}/images`)
-      .then((data) => {
+    API.get(`breed/${derivedBreed}/images`)
+      .then((data: any) => {
         store.stopLoading();
-        data.message?.forEach((item) => {
+        data.message?.forEach((item: string) => {
           breedImages.value.push(item);
         });
       })

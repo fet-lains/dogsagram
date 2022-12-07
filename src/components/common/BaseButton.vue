@@ -4,17 +4,18 @@
   </button>
 </template>
 
-<script setup>
-  defineProps({
-    type: {
-      type: String,
-      default: 'button',
-      validator(value) {
-        return ['button', 'submit'].includes(value);
-      },
-    },
+<script setup lang="ts">
+  interface BaseButtonProps {
+    type?: 'button' | 'submit';
+  }
+
+  withDefaults(defineProps<BaseButtonProps>(), {
+    type: 'button',
   });
-  defineEmits(['customAction']);
+
+  defineEmits<{
+    (e: 'customAction'): void;
+  }>();
 </script>
 
 <style lang="less" scoped>
