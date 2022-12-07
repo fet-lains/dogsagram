@@ -1,7 +1,7 @@
-export default (el, callback) => {
+export default (el: HTMLElement, callback: () => void) => {
   let tapedTwice = false;
 
-  const tapHandler = (event) => {
+  const tapHandler = (event: Event): boolean | void => {
     if (!tapedTwice) {
       tapedTwice = true;
       setTimeout(() => {

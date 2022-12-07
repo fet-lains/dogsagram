@@ -1,7 +1,9 @@
 <template>
   <article class="card" ref="dogsCard">
     <div class="card__image ibg">
-      <img :src="imageUrl" alt="" />
+      <img
+        :src="imageUrl"
+        alt="If you see this, the image has not been loaded" />
     </div>
     <div class="card__footer">
       <h2 class="breed-title">{{ breed }}</h2>
@@ -17,28 +19,26 @@
   </article>
 </template>
 
-<script setup>
+<script setup lang="ts">
   import { ref, computed, onMounted } from 'vue';
   import FavouriteIcon from '@/components/icons/FavouriteIcon.vue';
-  import useDoubleTap from '@/composables/useDoubleTap.js';
-  import useGetBreed from '@/composables/useGetBreed.js';
-  import { useBreedStore } from '@/stores/BreedStore.js';
+  import useDoubleTap from '@/composables/useDoubleTap';
+  import useGetBreed from '@/composables/useGetBreed';
+  import { useBreedStore } from '@/stores/BreedStore';
 
-  const props = defineProps({
-    imageUrl: {
-      type: String,
-      required: true,
-    },
-    favourite: {
-      type: Boolean,
-      default: false,
-    },
+  interface DogsCardProps {
+    imageUrl: string;
+    favourite?: boolean;
+  }
+
+  const props = withDefaults(defineProps<DogsCardProps>(), {
+    favourite: false,
   });
 
   const isFavourite = ref(false);
   const store = useBreedStore();
 
-  const toggleFavourite = () => {
+  const toggleFavourite = (): void => {
     if (store.favouriteImages.includes(props.imageUrl)) {
       const filteredArray = store.favouriteImages.filter(
         (item) => item !== props.imageUrl,
@@ -52,7 +52,7 @@
 
     store.saveFavouriteImages();
   };
-  const setFavouriteIcon = () => {
+  const setFavouriteIcon = (): void => {
     if (store.favouriteImages.includes(props.imageUrl)) {
       isFavourite.value = true;
     } else {
@@ -61,16 +61,16 @@
   };
 
   // Logic to get breed from url
-  const breed = computed(() => {
+  const breed = computed((): string => {
     return useGetBreed(props.imageUrl);
   });
 
   // Double tap logic to toggle favourite
-  const dogsCard = ref(null);
+  const dogsCard = ref<HTMLInputElement | null>(null);
 
   onMounted(() => {
     setFavouriteIcon();
-    useDoubleTap(dogsCard.value, toggleFavourite);
+    if (dogsCard.value) useDoubleTap(dogsCard.value, toggleFavourite);
   });
 </script>
 
