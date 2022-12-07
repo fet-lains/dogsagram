@@ -65,7 +65,7 @@
   });
 
   // Double tap logic to toggle favourite
-  const dogsCard = ref<HTMLInputElement | null>(null);
+  const dogsCard = ref<HTMLElement | null>(null);
 
   onMounted(() => {
     setFavouriteIcon();
