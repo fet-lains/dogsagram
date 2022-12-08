@@ -18,7 +18,7 @@
       <TransitionGroup appear name="cards-scale">
         <DogsCard
           v-for="(image, i) in store.favouriteImages"
-          :key="i"
+          :key="`image-${i}`"
           :image-url="image"
           favourite />
       </TransitionGroup>

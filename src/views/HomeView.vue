@@ -10,7 +10,7 @@
       <TransitionGroup appear name="cards-scale">
         <DogsCard
           v-for="(image, i) in randomImages"
-          :key="i"
+          :key="`image-${i}`"
           :image-url="image" />
       </TransitionGroup>
     </template>
