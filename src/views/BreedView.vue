@@ -39,7 +39,7 @@
     }
 
     API.get(`breed/${derivedBreed}/images`)
-      .then((data: any) => {
+      .then((data) => {
         store.stopLoading();
         data.message?.forEach((item: string) => {
           breedImages.value.push(item);
