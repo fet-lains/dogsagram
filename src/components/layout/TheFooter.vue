@@ -2,7 +2,7 @@
   <footer class="footer">
     <div class="container">
       <div class="footer__body">
-        <small class="copyright">&copy; {{ date }} Sharaputo</small>
+        <small class="copyright">&copy; {{ date }} f.lains</small>
         <ThemeButton />
       </div>
     </div>
